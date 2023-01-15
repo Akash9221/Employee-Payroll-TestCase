@@ -25,6 +25,12 @@ namespace TestProject1
             string result=employeePayrollServices.AddEmployeeInDB(employee);
             Assert.AreEqual("Employee Added Successfully", result);
         }
-        
+        [TestMethod]
+        public void RetrieveEntriesFromEmployeePayDB()
+        {
+            string result = employeePayrollServices.RetrieveEntriesFromEmployeePayDB();
+            Assert.AreEqual("Retrived Data Successfully", result);
+        }
+
     }
 }
