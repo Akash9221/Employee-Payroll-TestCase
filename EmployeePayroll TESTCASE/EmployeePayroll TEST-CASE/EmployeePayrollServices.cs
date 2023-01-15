@@ -126,6 +126,42 @@ namespace EmployeePayroll_TEST_CASE
             }
             return null;
         }
+        public string DeleteDataFromDatabase(string name)
+        {
+            SqlConnection sqlconnection = new SqlConnection(connectionString);
+            try
+            {
+                using (sqlconnection)
+                {
+                    sqlconnection.Open();
+                    SqlCommand command = new SqlCommand("SPDeleteDataFromDB", sqlconnection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Name", name);
+
+                    int result = command.ExecuteNonQuery();
+                    sqlconnection.Close();
+                    if (result >= 1)
+                    {
+
+                        Console.WriteLine("Employee Deleted Successfully");
+                        return "Delete Succesfully";
+                    }
+                    else
+                    {
+                        Console.WriteLine("No DataBase found");
+                        return "Not Delete";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // handle exception here
+                Console.WriteLine(ex.Message);
+            }
+            return null;
+        }
+
+
     }
 }
 
