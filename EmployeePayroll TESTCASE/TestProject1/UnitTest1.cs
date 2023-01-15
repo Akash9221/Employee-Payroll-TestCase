@@ -31,6 +31,18 @@ namespace TestProject1
             string result = employeePayrollServices.RetrieveEntriesFromEmployeePayDB();
             Assert.AreEqual("Retrived Data Successfully", result);
         }
+        [TestMethod]
+        public void UpdateDataInDatabase()
+        {
+            EmployeePayroll employeePayroll = new EmployeePayroll
+            {
+                Name = "Akash",
+                Address = "DDD",
+                PhoneNumber = 8967453210
 
+            };
+            string result = employeePayrollServices.UpdateDataInDatabase(employeePayroll);
+            Assert.AreEqual("Update Data Successfully", result);
+        }
     }
 }
